@@ -24,6 +24,6 @@
       return;
     }                                                                                                                                                                                      
                                                                                                                                                                                          
-    res.writeHead(302, { Location: 'https://go.aff.bateu.bet.br/aibq3qwm?campaign_id=29909&shareCode=UFCY3A0BHYC&afp4=bot&home=1' });                                                                                                                          
+    res.writeHead(302, { Location: 'https://go.aff.bateu.bet.br/aibq3qwm?campaign_id=29909&shareCode=QTCTQVBBBRX&afp4=bot&home=1' });                                                                                                                          
     res.end();                                                                                                                                                                           
   }
