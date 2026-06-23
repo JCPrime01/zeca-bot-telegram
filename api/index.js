@@ -22,8 +22,28 @@
       res.writeHead(302, { Location: 'https://grupojogadorcaro.com.br/quem-e-zeca' });                                                                                                     
       res.end();                                                                                                                                                                           
       return;
-    }                                                                                                                                                                                      
+    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
                                                                                                                                                                                          
-    res.writeHead(302, { Location: 'https://go.aff.bateu.bet.br/aibq3qwm?campaign_id=29909&shareCode=IGTWCF7O5L1&afp4=bot&home=1' });                                                                                                                          
-    res.end();                                                                                                                                                                           
+    const url = 'https://go.aff.bateu.bet.br/aibq3qwm?campaign_id=29909'
+
+    const shareCode = '&shareCode=IGTWCF7O5L1'
+    
+    const afp = '&afp4=bot'
+    
+    const source = '&utm_medium=telegram'
+
+    const home = '&home=1'
+    
+    const destino = new URL(url + shareCode + afp + source + home)
+
+    const entrada = new URL(req.url, `https://${req.headers.host}`).searchParams;
+
+    for (const [chave, valor] of entrada) {
+      if (chave.startsWith('utm_') || chave === 'source_id' || chave === 'fbclid' || chave === 'gclid') {
+        destino.searchParams.set(chave, valor);
+      }
+    }
+
+    res.writeHead(302, { Location: destino.toString() });
+    res.end();
   }
